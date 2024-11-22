@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Тест SpeechKit Cloud API от компании Yandex.</title>
+<meta charset="utf-8">
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+function Get_Weather()
+{
+   var tts_text=document.getElementById('weather').value;
+   console.log(tts_text);
+ var response="weather.php?&q="+encodeURI(tts_text); //путь до mp3 файла
+ var audio = document.getElementById("gameMusic");
+  if (audio)
+  {
+   audio.parentNode.removeChild(audio);
+  }
+ 
+  // создаём новый элемент audio
+  audio = document.createElement("audio");
+  audio.setAttribute("id", "gameMusic");
+  audio.setAttribute("autoplay", "true");
+  //audio.setAttribute("loop", "false");
+ 
+  var mp3 = document.createElement("source");
+  mp3.setAttribute("src", response);
+  mp3.setAttribute("type", "audio/mpeg");
+ 
+  audio.appendChild(mp3);
+  audio.play();
+  document.body.appendChild(audio);
+}
+function Get_News()
+{
+   var tts_text=document.getElementById('news').value;
+   console.log(tts_text);
+ var response="news.php?&q="+encodeURI(tts_text); //путь до mp3 файла
+ var audio = document.getElementById("gameMusic");
+  if (audio)
+  {
+   audio.parentNode.removeChild(audio);
+  }
+ 
+  // создаём новый элемент audio
+  audio = document.createElement("audio");
+  audio.setAttribute("id", "gameMusic");
+  audio.setAttribute("autoplay", "true");
+  //audio.setAttribute("loop", "false");
+ 
+  var mp3 = document.createElement("source");
+  mp3.setAttribute("src", response);
+  mp3.setAttribute("type", "audio/mpeg");
+ 
+  audio.appendChild(mp3);
+  audio.play();
+  document.body.appendChild(audio);
+}
+</script>
+<h1><span>Тест SpeechKit Cloud API от компании Yandex.</span></h1>
+<h2>Погода</h2>
+<select size="1" onclick="Get_Weather();" id="weather"> 
+    <option disabled>Выберите город</option> 
+    <option value="27612">Москва</option> 
+    <option value="34880">Астрахань</option>
+    <option value="26063">Санкт-Петербург</option>
+    <option value="25913">Магадан</option>
+</select>
+<h2>Новости</h2>
+<select size="1" onclick="Get_News();" id="news"> 
+    <option disabled>Выберите город</option> 
+    <option selected value="Astrakhan">Астрахань</option> 
+    <option  value="Volgograd">Волгоград</option>
+    <option  value="Krasnodar">Краснодар</option>    
+    <option  value="Moscow">Москва</option>
+    <option  value="Saratov">Саратов</option>
+</select>
+</body>
+</html>
